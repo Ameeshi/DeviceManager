@@ -22,14 +22,14 @@ function DeviceTable(props) {
   if (props.limit) {
     devices = devices.slice(0, props.limit)
   }
-  const deviceRows = devices.map((device, idx) => (
+  const deviceRows = devices.map((device, id) => (
     <DeviceRow 
       key={device.ip}
       device={device}
       byteFields={props.byteFields}
       fields={props.fields}
       ownerName={props.ownerName}
-      onChange={(field, value) => props.onChange(idx, field, value)}
+      onChange={(field, value) => props.onChange(id, field, value)}
     />
   ))
 
@@ -100,9 +100,9 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange(idx, field, value) {
+  handleChange(id, field, value) {
     let devices = this.state.devices
-    devices[idx][field] = value
+    devices[id][field] = value
     this.setState({
       devices: devices
     })
@@ -126,7 +126,7 @@ class App extends React.Component {
     )
   }
 
-  renderTop5Common(sortedBy, limit) {
+  renderTop5Common(sortedBy) {
     let title = "Top 5 " + this.fieldNames[sortedBy] + " Devices"
     let fields = ['ip', 'owner']
     fields.push(sortedBy)
@@ -139,7 +139,7 @@ class App extends React.Component {
           byteFields={this.byteFields}
           fields={fields}
           sortedBy={sortedBy}
-          limit={limit}
+          limit={5}
         />
       </div>
     )
@@ -148,13 +148,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h2>Device Manager</h2>
+          <h2>Device Manager</h2>
         <div className="container">
           <div className="row">
-            {this.renderTop5Common('cpuPct', 5)}
-            {this.renderTop5Common('memBytes', 5)}
-            {this.renderTop5Common('networkRxBytes', 5)}
-            {this.renderTop5Common('networkTxBytes', 5)}
+            {this.renderTop5Common('cpuPct')}
+            {this.renderTop5Common('memBytes')}
+            {this.renderTop5Common('networkRxBytes')}
+            {this.renderTop5Common('networkTxBytes')}
           </div>
           <div className="row">
             {this.renderMainTable(['owner'])}
