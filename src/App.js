@@ -112,7 +112,7 @@ class App extends React.Component {
     let fields = ['ip', 'owner', 'cpuPct', 'memBytes', 'networkRxBytes', 'networkTxBytes']
     return (
       <div className="col-distribute">
-        <h2>All Devices</h2>
+        <h3>All Devices</h3>
         <DeviceTable
           fieldNames={this.fieldNames}
           devices={this.state.devices}
@@ -132,7 +132,7 @@ class App extends React.Component {
     fields.push(sortedBy)
     return (
       <div className="col-distribute">
-        <h2>{title}</h2>
+        <h3>{title}</h3>
         <DeviceTable
           fieldNames={this.fieldNames}
           devices={this.state.devices}
@@ -148,7 +148,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>Device Manager</h1>
+        <h2>Device Manager</h2>
         <div className="container">
           <div className="row">
             {this.renderTop5Common('cpuPct', 5)}

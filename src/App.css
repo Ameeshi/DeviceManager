@@ -37,10 +37,16 @@
   }
 }
 
+body {
+  background-color: #2d2d3d;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
 
 .container {
   display: flex;
   flex-direction: column;
+
 }
 
 .row {
@@ -52,25 +58,28 @@
 }
 
 table, th, td {
-  border: 1px solid black;
+  border: 1px solid #2d2d3d;
   border-collapse: collapse;
 }
 
 table {
   margin: 20px;
-}
-
-tr:hover {
-  background: #eee9f2;
+  font-size: 11px;
 }
 
 th, td {
-  padding: 8px 12px;
+  padding: 8px;
+  text-align: left;
+  background-color: white;
+  color: black;
 }
 
 th {
   background:#c1a0d9;
-  color: white;
+}
+
+tr:hover {
+  background: #eee9f2;
 }
 
 input {
